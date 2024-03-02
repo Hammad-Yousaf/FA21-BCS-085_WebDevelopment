@@ -1,4 +1,3 @@
-/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,7 +10,6 @@ body {
     text-align: justify;
 }
 
-/* Container */
 #cv-container {
     max-width: 800px;
     margin: 50px auto;
@@ -19,7 +17,6 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
 #header {
     background-color: #001f3f;
     color: #ffffff;
@@ -51,13 +48,26 @@ body {
     left: 31px;
 }
 
+@keyframes ani {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 #header-text {
     text-align: left;
     padding: 20px;
 }
 
-#header-text h1, #header-text h2, #header-text h3 {
+#header-text h1 {
     color: #ffffff;
+}
+
+#header-text h2,
+#header-text h3 {
+    color: #001f3f;
+    border-bottom: 2px solid #001f3f;
+    padding-bottom: 5px;
 }
 
 #header-text p {
@@ -66,8 +76,8 @@ body {
     margin-right: 0;
 }
 
-/* Sections */
-#left-section, #right-section {
+#left-section,
+#right-section {
     padding: 30px;
 }
 
@@ -81,48 +91,78 @@ body {
     overflow: hidden;
 }
 
-/* Headings */
-h1 {
-    font-size: 30px;
-    color: #ffffff;
-    position: relative;
-    -webkit-text-stroke: 0.3vw #001f3f;
-    text-transform: uppercase;
-}
-
-h1::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: #ffffff;
-    -webkit-text-stroke: 0vw #ffffff;
-    border-right: 2px solid #ffffff;
-    overflow: hidden;
-    animation: animate 6s linear infinite;
-}
-
-h2, h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+h2,
+h3 {
     color: #001f3f;
     border-bottom: 2px solid #001f3f;
     padding-bottom: 5px;
 }
-
-h3,h2:hover {
-    font-size: 30px;
-    color: #00a9b5; /* Example hover effect */
+h3:hover{
+    font-size: 25px;
+    color: #4f8bc6;
 }
 
+h1 {
+font-size: 30px;
+color: #ffffff;
+position: relative;
+-webkit-text-stroke: 0.3vw #001f3f;
+text-transform: uppercase;
+}
+
+h1::before {
+content: attr(data-text);
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+color: #ffffff;
+-webkit-text-stroke: 0vw #ffffff;
+border-right: 2px solid #ffffff;
+overflow: hidden;
+animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+0% {
+width: 0;
+}
+
+50% {
+width: 60%;
+}
+
+100% {
+width: 0;
+}
+}
+
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h3,
 h4 {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-/* Skills */
+ul {
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
 .skill {
     margin: 20px 0;
     padding: 10px;
@@ -144,29 +184,67 @@ h4 {
 }
 
 .bar span {
-    display: block;
-    height: 100%;
+    height: 20px;
+    float: left;
     background: linear-gradient(135deg, rgb(1, 6, 43) 0%, rgb(129, 129, 220) 100%);
 }
 
-/* Skill Animation */
-#Database, #Programming, #Data-Structure, #Wire-framing {
-    animation: widthExpand 3s;
+#Database {
+    width: 91%;
+    animation: Database 3s;
 }
 
-@keyframes widthExpand {
-    from { width: 0%; }
-    to { width: var(--target-width); } /* Use CSS variables for dynamic widths */
+#Programming {
+    width: 81%;
+    animation: Programming 3s;
 }
 
-/* Profile Picture Animation */
-@keyframes ani {
-    to { transform: rotate(360deg); }
+#Data-Structure {
+    width: 79%;
+    animation: DataStructure 3s;
 }
 
-/* Text Animation */
-@keyframes animate {
-    0% { width: 0; }
-    50% { width: 60%; }
-    100% { width: 0; }
+#Wire-framing {
+    width: 82%;
+    animation: Wireframing 3s;
+}
+
+@keyframes Database {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 91%;
+    }
+}
+
+@keyframes Programming {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 81%;
+    }
+}
+
+@keyframes DataStructure {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 79%;
+    }
+}
+
+@keyframes Wireframing {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 82%;
+    }
 }
