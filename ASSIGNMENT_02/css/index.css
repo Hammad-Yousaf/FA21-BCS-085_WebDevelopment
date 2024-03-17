@@ -3,7 +3,7 @@
 	margin-left: 30px;
 	border-radius: 4px;
 	font-weight: 400;
-	color: #fff;
+	color: #05004b;
 	text-decoration: none;
 	padding: .5rem 1rem;
 	line-height: 2.3;
@@ -24,10 +24,10 @@
 	color: #000;
 }
 .navbar-light .navbar-nav .nav-link {
-	color: #000;
+	color: #ffffff;
 }
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-	color: #000;
+	color: #ffffff;
 }
 .w-100 {
 	height: 100vh;
@@ -36,5 +36,9 @@
 	padding: 1px 5px;
 	font-size: 18px;
 	line-height: 0.3;
-	background: #fff;
+	background: #f6f6f6;
+}
+.logo-img {
+    width: 150px; 
+    height: auto; 
 }
