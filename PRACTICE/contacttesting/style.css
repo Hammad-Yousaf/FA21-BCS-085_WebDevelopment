@@ -1,0 +1,202 @@
+.navbar .getstarted {
+	background: #106eea;
+	margin-left: 30px;
+	border-radius: 4px;
+	font-weight: 400;
+	color: #05004b;
+	text-decoration: none;
+	padding: .5rem 1rem;
+	line-height: 2.3;
+}
+.navbar-nav a {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.navbar-light .navbar-brand {
+	color: #000;
+	font-size: 25px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link {
+	color: #000000;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: #001f7b;
+    font-size: 16px;
+}
+.w-100 {
+	height: 100vh;
+}
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #f6f6f6;
+}
+body,
+input,
+select,
+textarea {
+    font-family: "Poppins", sans-serif;
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #5a9a7c;
+    background-image: url(leaves.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 4rem;
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+label{
+  font-size: 1.1rem;
+  font-family: cursive;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 3.3rem;
+    box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 37px;
+}
+
+.inner-box {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.contact-info h2 {
+  font-weight: 800;
+  letter-spacing: 1.03rem;
+    margin-bottom: 1.5rem;
+}
+
+.info {
+    margin-bottom: 2rem;
+}
+
+.info p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem; 
+    color: #444; 
+}
+
+.contact-info img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.forms-wrap {
+    flex: 1;
+    width: 100%;
+    max-width: 450px;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.heading {
+    margin-bottom: 2rem;
+}
+
+.heading h2 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #151111;
+}
+
+.actual-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrap {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input-field,
+textarea,
+select {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #1e281c;
+    padding: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #151111;
+    transition: 0.4s;
+}
+
+
+
+.send-btn {
+    width: 100%;
+    height: 43px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+    background-color: #5a9a7c;
+}
+
+@media screen and (max-width: 768px) {
+    .inner-box {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-info,
+    .forms-wrap {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .contact-info {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .info p {
+        text-align: left;
+    }
+}

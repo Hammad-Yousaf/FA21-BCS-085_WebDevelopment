@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+  <link rel="stylesheet" href="api.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="all">
+<div class="card">
+
+    
+<div class="title">
+    mujhe bhook lag jati hai or woh bhi bohat zada
+</div>
+
+<div class="price">
+1800rs
+</div>
+
+<div class="category">
+    whatever
+</div>
+
+
+<div class="image">
+    <img src="" alt="">
+</div>
+
+</div>
+<div class="card">
+
+    cont
+</div>
+
+</div>
+
+  <!-- <div id="productListContainer"> -->
+    <!-- <h1>Product List</h1> -->
+    <!-- <ul id="productList"></ul> -->
+  <!-- </div> -->
+  <!-- <div class="rice">
+    mujhe bhook lagi hai
+  </div> -->
+
+<script>
+  $(document).ready(async function() {
+    try {
+        let res = await fetch('https://fakestoreapi.com/products');
+        let products = await res.json();
+        const productListElement = $('.all');
+        $.each(products, function(index, product) {
+            let card = $('<div>').addClass('card');
+
+            let tit = $('<div>').addClass('title').text(product.title);
+            card.append(tit);
+
+            let pric = $('<div>').addClass('price').text('Price: ' + product.price);
+            card.append(pric);
+
+            let cate = $('<div>').addClass('category').text('Category: ' + product.category);
+            card.append(cate);
+
+            let img = $('<div>').addClass('image');
+            let newimg = $('<img>').attr('src', product.image);
+            img.append(newimg);
+
+            card.append(img);
+
+            productListElement.append(card);
+        });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+});
+
+</script>
+
+  <!-- <script src="script.js"></script> -->
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+</body>
+</html>
