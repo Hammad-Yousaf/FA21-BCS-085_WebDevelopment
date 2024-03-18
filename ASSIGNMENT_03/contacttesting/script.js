@@ -1,44 +1,44 @@
-const navEl= document.querySelector('.navbar');
-window.addEventListener('scroll',()=> {
-  if(window.scrollY>=40){
-    navEl.classList.add('navbar-scrolled')
+// Navbar scrolling effect
+$(window).scroll(function() {
+  const navEl = $('.navbar');
+  if ($(this).scrollTop() >= 40) {
+      navEl.addClass('navbar-scrolled');
+  } else {
+      navEl.removeClass('navbar-scrolled');
   }
-  else if(window.scrollY < 40){
-    navEl.classList.remove('navbar-scrolled')
-  }
-})
-document.addEventListener("DOMContentLoaded", function() {
-  const form = document.querySelector(".contact-form");
-  const inputs = form.querySelectorAll(".input-field");
-  const sendBtn = form.querySelector(".send-btn");
+});
 
-  sendBtn.addEventListener("click", function(event) {
+// Form validation and submission
+$(document).ready(function() {
+  const form = $(".contact-form");
+  const inputs = form.find(".input-field");
+  const sendBtn = form.find(".send-btn");
+
+  sendBtn.click(function(event) {
       event.preventDefault();
       let isValid = true;
 
-      inputs.forEach(input => {
-          if (input.value.trim() === "") {
+      inputs.each(function() {
+          if ($(this).val().trim() === "") {
               isValid = false;
-              showErrorMessage(input, "This field is required.");
+              showErrorMessage($(this), "This field is required.");
           } else {
-              hideErrorMessage(input);
+              hideErrorMessage($(this));
           }
       });
 
       if (isValid) {
           alert("Message sent!");
-          form.reset();
+          form[0].reset();
       }
   });
 
   function showErrorMessage(input, message) {
-      const errorDiv = input.parentNode.querySelector(".error");
-      errorDiv.textContent = message;
-      errorDiv.style.color = "red"; 
+      const errorDiv = input.parent().find(".error");
+      errorDiv.text(message).css("color", "red");
   }
 
   function hideErrorMessage(input) {
-      const errorDiv = input.parentNode.querySelector(".error");
-      errorDiv.textContent = ""; 
+      input.parent().find(".error").text("");
   }
 });
