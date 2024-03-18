@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        #stories-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .story {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .story h2 {
+            margin-top: 0;
+        }
+        .story p {
+            margin-bottom: 0;
+        }
+        .edit-btn,
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .delete-btn {
+            right: 10px;
+            background-color: #dc3545;
+        }
+        #create-story {
+            margin-top: 20px;
+        }
+        #create-story input[type="text"],
+        #create-story textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        #create-story button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="stories-container">
+        <!-- Stories will be inserted here -->
+    </div>
+
+    <div id="create-story">
+        <h2>Create a New Story</h2>
+        <input type="text" id="new-title" placeholder="Title">
+        <textarea id="new-content" placeholder="Content"></textarea>
+        <button id="create-btn">Create</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Function to fetch data from the API and render stories
+            function fetchDataAndRender() {
+                $.getJSON('https://usmanlive.com/wp-json/api/stories', function(data) {
+                    renderStories(data);
+                }).fail(function(jqxhr, textStatus, error) {
+                    console.error('Error fetching data:', textStatus, error);
+                });
+            }
+            
+            // Function to render stories
+            function renderStories(data) {
+                $('#stories-container').empty();
+                $.each(data, function(index, story) {
+                    const storyElement = `
+                        <div class="story" data-id="${story.id}">
+                            <h2>${story.title}</h2>
+                            <p>${story.content}</p>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </div>
+                    `;
+                    $('#stories-container').append(storyElement);
+                });
+
+                // Attach event listener to delete buttons
+                $('.delete-btn').click(function() {
+                    const storyId = $(this).closest('.story').data('id');
+                    deleteStory(storyId);
+                });
+
+                // Attach event listener to edit buttons
+                $('.edit-btn').click(function() {
+                    const storyDiv = $(this).parent();
+                    const storyId = storyDiv.data('id');
+                    const title = storyDiv.find('h2').text();
+                    const content = storyDiv.find('p').text();
+                    const newTitle = prompt('Enter new title:', title);
+                    const newContent = prompt('Enter new content:', content);
+                    if (newTitle !== null && newContent !== null) {
+                        updateStory(storyId, newTitle, newContent);
+                    }
+                });
+            }
+
+            // Function to delete a story
+            function deleteStory(storyId) {
+                $.ajax({
+                    url: `https://usmanlive.com/wp-json/api/stories/${storyId}`,
+                    type: 'DELETE',
+                    success: function(result) {
+                        console.log('Story deleted successfully');
+                        fetchDataAndRender(); // Re-render stories after deletion
+                    },
+                    error: function(jqxhr, textStatus, error) {
+                        console.error('Error deleting story:', textStatus, error);
+                    }
+                });
+            }
+
+            // Function to update a story
+            function updateStory(storyId, newTitle, newContent) {
+                const updatedStory = {
+                    title: newTitle,
+                    content: newContent
+                };
+                $.ajax({
+                    url: `https://usmanlive.com/wp-json/api/stories/${storyId}`,
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(updatedStory),
+                    success: function(result) {
+                        console.log('Story updated successfully');
+                        fetchDataAndRender(); // Re-render stories after update
+                    },
+                    error: function(jqxhr, textStatus, error) {
+                        console.error('Error updating story:', textStatus, error);
+                    }
+                });
+            }
+
+            // Function to create a new story
+            $('#create-btn').click(function() {
+                const newTitle = $('#new-title').val();
+                const newContent = $('#new-content').val();
+                if (newTitle && newContent) {
+                    const newStory = {
+                        title: newTitle,
+                        content: newContent
+                    };
+                    $.ajax({
+                        url: 'https://usmanlive.com/wp-json/api/stories',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(newStory),
+                        success: function(result) {
+                            console.log('Story created successfully');
+                            fetchDataAndRender(); // Re-render stories after creation
+                            $('#new-title').val('');
+                            $('#new-content').val('');
+                        },
+                        error: function(jqxhr, textStatus, error) {
+                            console.error('Error creating story:', textStatus, error);
+                        }
+                    });
+                } else {
+                    alert('Please enter both title and content.');
+                }
+            });
+
+            // Initial fetch and render
+            fetchDataAndRender();
+        });
+    </script>
+</body>
+</html>
