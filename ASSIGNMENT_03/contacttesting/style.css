@@ -68,27 +68,10 @@ main::before {
     background-image: url(../contacttesting/tommy-anderson-qyZk3H8B4RQ-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    filter: blur(10px); /* Adjust the blur effect as needed */
-    z-index: -1; /* Ensure the blurred background is behind other content */
+    filter: blur(10px); 
+    z-index: -1; 
 }
 
-/* Rest of your CSS */
-/*
-main {
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: #5a9a7c;
-    background-image: url(leaves.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 4rem;
-    padding: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-*/
 label{
   font-size: 1.1rem;
   font-family: cursive;
@@ -116,26 +99,44 @@ label{
     justify-content: space-between;
     align-items: flex-start;
 }
-
+/*
 .contact-info {
     flex: 1;
     padding-right: 2rem;
+}*/
+.contact-info {
+    flex: 1;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+
+
 .contact-info h2 {
-  font-weight: 800;
-  letter-spacing: 1.03rem;
+    font-weight: 800;
+    letter-spacing: 1.03rem;
     margin-bottom: 1.5rem;
-}
+    color: #7dc9be;
+ }
 
 .info {
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 .info p {
     margin-bottom: 0.5rem;
-    font-size: 0.9rem; 
-    color: #444; 
+    font-size: 0.9rem;
+    color: #67873f; 
+    margin-left: 1rem; 
+}
+
+.info img {
+    width: 30px; 
+    height: 30px;
 }
 
 .contact-info img {
@@ -153,16 +154,23 @@ label{
 
 .contact-form {
     width: 100%;
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #7dc9be;
+    border-radius: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
 .heading {
     margin-bottom: 2rem;
 }
 
 .heading h2 {
-    font-size: 2.1rem;
+    font-size: 1.8rem; 
     font-weight: 600;
-    color: #151111;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center; 
 }
 
 .actual-form {
@@ -172,42 +180,52 @@ label{
 
 .input-wrap {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .input-field,
 textarea,
 select {
     width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #1e281c;
-    padding: 0.3rem 0;
-    font-size: 0.95rem;
-    color: #151111;
-    transition: 0.4s;
+    background: #f5f5f5; 
+    border: 1px solid #ccc; 
+    border-radius: 0.8rem;
+    padding: 1rem;
+    font-size: 1rem; 
+    color: #333;
+    transition: 0.3s;
 }
-
+.input-field:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #5a9a7c; 
+}
+.input-field::placeholder,
+textarea::placeholder,
+select::placeholder {
+    color: #999; 
+}
+textarea {
+    resize: none; 
+}
 
 
 .send-btn {
     width: 100%;
-    height: 43px;
-    background-color: #151111;
+    height: 50px; 
+    background-color: #5a9a7c;
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 0.8rem;
-    font-size: 0.8rem;
-    margin-top: 2rem;
+    font-size: 1.1rem; 
     transition: 0.3s;
 }
 
 .send-btn:hover {
-    background-color: #5a9a7c;
+    background-color: #00263f; 
 }
-
 @media screen and (max-width: 768px) {
     .inner-box {
         flex-direction: column;
