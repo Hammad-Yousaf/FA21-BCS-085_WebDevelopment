@@ -180,5 +180,25 @@
         </div>
     </div>
 </body>
+<script>
+function displayImageName() {
+    var imageNameSpan = document.getElementById('image-name-display');
+    // Add mouseenter event to all images
+    document.querySelectorAll('.container img, .news-article img, .sidebar-article img').forEach(function(img) {
+        img.addEventListener('mouseenter', function() {
+            // Set the text of the span to this image's alt attribute
+            imageNameSpan.textContent = ' - ' + this.alt;
+        });
+        img.addEventListener('mouseleave', function() {
+            // Clear the text when the mouse leaves the image
+            imageNameSpan.textContent = '';
+        });
+    });
+}
 
-</html>
+// Run the function when the document is loaded
+document.addEventListener('DOMContentLoaded', displayImageName);
+</script>
+</body>
+</html> 
+
