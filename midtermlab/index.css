@@ -152,3 +152,49 @@
         margin-left: 10px;
         font-size: 14px;
     }
+    .navbar, .sub-navbar {
+        background-color: #003366; /* Dark blue background */
+        overflow: hidden;
+        color: white;
+    }
+    .navbar a, .sub-navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    .navbar a:hover, .sub-navbar a:hover {
+        background-color: #555;
+        color: white;
+    }
+    .sub-navbar {
+        background-color: #0055A4; /* Slightly lighter blue */
+    }
+    .navbar-right {
+        float: right;
+    }
+    .navbar .navbar-right a {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+    .sub-navbar a {
+        border-right: 1px solid #bbb; /* Border between sub-nav items */
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .sub-navbar a:last-child {
+        border-right: none;
+    }
+    .navbar a.logo {
+        font-weight: bold;
+        background-color: #002244; /* Even darker blue */
+    }
+    .update-time {
+        padding: 14px 16px;
+        font-size: 12px;
+        line-height: 12px;
+        border-right: 1px solid #bbb;
+    }
