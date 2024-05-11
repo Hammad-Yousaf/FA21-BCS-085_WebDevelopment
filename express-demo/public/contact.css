@@ -24,7 +24,7 @@ main::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../contacttesting/tommy-anderson-qyZk3H8B4RQ-unsplash.jpg);
+    background-image: url(images/tommy-anderson-qyZk3H8B4RQ-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     filter: blur(10px); 

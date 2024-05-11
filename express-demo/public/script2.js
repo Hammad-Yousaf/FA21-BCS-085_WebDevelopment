@@ -10,7 +10,7 @@ $(document).ready(function() {
     
     // Function to render stories
     function renderStories(data) {
-        $('.container').empty();
+        $('.storyContainer').empty();
         $.each(data, function(index, story) {
             const storyElement = `
                 <div class="story" data-id="${story.id}">
@@ -22,7 +22,7 @@ $(document).ready(function() {
                     </div>
                 </div>
             `;
-            $('.container').append(storyElement);
+            $('.storyContainer').append(storyElement);
         });
 
         // Attach event listener to delete buttons

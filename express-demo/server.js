@@ -8,7 +8,9 @@ var expressLayouts = require("express-ejs-layouts");
 server.use(expressLayouts);
 
 
-
+server.get("/homepage.html", (req, res) => {
+  res.render("homepage");
+});
 server.get("/contact-us.html", (req, res) => {
   res.render("contact-us");
 });
@@ -20,9 +22,7 @@ server.get("/", (req, res) => {
   res.render("homepage");
 });
 
-server.get("/homepage.html", (req, res) => {
-    res.render("homepage");
-  });
+
 
 
 

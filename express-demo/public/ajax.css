@@ -6,7 +6,7 @@ body {
     background-color: #f8f9fa;
 }
 
-.container {
+.StoryContainer {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
@@ -57,7 +57,7 @@ body {
     color: #ccc;
 }
 
-#create-story {
+#create-story3 {
     background-color: #7dc9be;
     color: #fff;
     padding: 20px;
@@ -68,24 +68,24 @@ body {
     margin-bottom: 20px;
 }
 
-#create-story:hover {
+#create-story3:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-#create-story h2 {
+#create-story3 h2 {
     margin-top: 0;
 }
 
-#create-story input[type="text"],
-#create-story textarea {
+#create-story3 input[type="text"],
+#create-story3 textarea {
     width: 100%;
     margin-bottom: 10px;
     padding: 8px;
     box-sizing: border-box;
 }
 
-#create-story button {
+#create-story3 button {
     background-color: transparent;
     border: none;
     color: #fff;
@@ -93,11 +93,11 @@ body {
     transition: color 0.3s ease;
 }
 
-#create-story button:hover {
+#create-story3 button:hover {
     color: #ccc;
 }
 
-#background-image {
+#background-image3 {
     position: fixed;
     top: 0;
     left: 0;
