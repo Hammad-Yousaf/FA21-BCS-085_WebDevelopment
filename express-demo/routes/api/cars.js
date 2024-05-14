@@ -1,37 +1,41 @@
 const express = require("express");
 let router = express.Router();
-let Student = require("../../models/Car");
+let Car = require("../../models/Car");
 
 router.post("/api/cars", async function (req, res) {
   let data = req.body;
-  let student = new Student(data);
-  await student.save();
-  res.send(student);
+  let car = new Car(data);
+  await car.save();
+  res.send(car);
 });
-router.delete("/api/students/:id", async function (req, res) {
-  let student = await Student.findByIdAndDelete(req.params.id);
-  if (!student) return res.status(404).send("Record Not Found");
-  res.send(student);
+
+
+router.delete("/api/cars/:id", async function (req, res) {
+  let car = await Car.findByIdAndDelete(req.params.id);
+  if (!car) return res.status(404).send("Record Not Found");
+  res.send(car);
 });
-router.put("/api/students/:id", async function (req, res) {
-  let student = await Student.findById(req.params.id);
-  if (!student) return res.status(404).send("Record Not Found");
-  student.name = req.body.name;
-  student.address = req.body.address;
-  await student.save();
-  res.send(student);
+
+router.put("/api/cars/:id", async function (req, res) {
+  let car = await Car.findById(req.params.id);
+  if (!car) return res.status(404).send("Record Not Found");
+
+  car.make = req.body.make;
+  car.model = req.body.model;
+  car.year = req.body.year;
+  car.price = req.body.price;
+  car.description = req.body.description;
+  car.color = req.body.color;
+  // car.images = req.body.images;
+
+  await car.save();
+  res.send(car);
 });
-router.get("/api/students/:id", async function (req, res) {
-  let student = await Student.findById(req.params.id);
-  res.send(student);
-});
-router.get("/api/students", async function (req, res) {
-  let students = await Student.find();
-  //   let students = [
-  //     { name: "Abdul Rehman", address: "Hafiz Abad" },
-  //     { name: "Azeem", address: "Pak Arab" },
-  //   ];
-  res.send(students);
+
+router.get("/api/cars/:id", async function (req, res) {
+  let car = await Car.findById(req.params.id);
+  if (!car) return res.status(404).send("Record Not Found");
+  res.send(car);
 });
 
 module.exports = router;

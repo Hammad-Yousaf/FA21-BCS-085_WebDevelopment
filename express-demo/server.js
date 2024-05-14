@@ -7,8 +7,8 @@ server.use(express.static("public"));
 var expressLayouts = require("express-ejs-layouts");
 server.use(expressLayouts);
 
-const express = require('express')
-const workoutRoutes = require('./routes/test')
+
+const workoutRoutes = require('./routes/cars')
 
 // express app
 const app = express()
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.use('/api/test', workoutRoutes)
+app.use('/api/cars', workoutRoutes)
 
 
 server.get("/homepage.html", (req, res) => {
