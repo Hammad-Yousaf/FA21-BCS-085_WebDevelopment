@@ -1,9 +1,11 @@
 {
+  "type": "module",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.19.1",
+    "express": "^4.19.2",
     "express-ejs-layouts": "^2.5.1",
     "express-g": "^1.0.9",
-    "mongoose": "^8.2.3"
+    "mongoose": "^8.2.3",
+    "moongose": "^1.0.0"
   }
 }

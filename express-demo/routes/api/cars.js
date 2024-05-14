@@ -1,8 +1,8 @@
 const express = require("express");
 let router = express.Router();
-let Student = require("../../models/Student");
+let Student = require("../../models/Car");
 
-router.post("/api/students", async function (req, res) {
+router.post("/api/cars", async function (req, res) {
   let data = req.body;
   let student = new Student(data);
   await student.save();

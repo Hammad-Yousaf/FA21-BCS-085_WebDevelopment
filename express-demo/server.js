@@ -7,10 +7,28 @@ server.use(express.static("public"));
 var expressLayouts = require("express-ejs-layouts");
 server.use(expressLayouts);
 
+const express = require('express')
+const workoutRoutes = require('./routes/test')
+
+// express app
+const app = express()
+
+// middleware
+app.use(express.json())
+
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
+
+// routes
+app.use('/api/test', workoutRoutes)
+
 
 server.get("/homepage.html", (req, res) => {
   res.render("homepage");
-});
+}); 
+
 server.get("/contact-us.html", (req, res) => {
   res.render("contact-us");
 });
