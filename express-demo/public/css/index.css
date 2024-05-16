@@ -185,29 +185,29 @@ trying
 
 .footer-logo a,.footer-logo a:hover,.footer-logo a:focus{
     display: inline-block;
-    color: #000000;
+    color: #ffffff;
     font-size: 24px;
     letter-spacing: 3px;
     font-family: 'Rufina', serif;
     font-weight: 700;
     text-transform:uppercase;
-    text-decoration: none; /* Added to remove underline */
+    text-decoration: underline; /* Added to remove underline */
 }
 .single-footer-widget p {
     font-size: 14px;
-    color: #000000;
+    color: #ffffff;
     max-width: 300px;
     margin:40px 0 20px;
 }
 .footer-contact p {
     margin: 0;
-    color: #000000;
+    color: #fcfcfc;
 }
 
 .single-footer-widget {margin-bottom: 40px;}
 .single-footer-widget h2 {
     font-size: 14px;
-    color: #010101;
+    color: #ffffff;
     text-transform: uppercase;
     margin-bottom: 43px;
 }

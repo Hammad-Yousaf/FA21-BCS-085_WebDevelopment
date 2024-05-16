@@ -108,3 +108,16 @@ body {
     filter: blur(10px); 
     z-index: -1; 
 }
+/* Custom styles for the Account dropdown menu */
+.navbar-nav .dropdown-menu {
+    background-color: #f8f9fa; /* Custom background color */
+  }
+  
+  .navbar-nav .dropdown-menu .dropdown-item {
+    color: #343a40; /* Custom text color */
+  }
+  
+  .navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: #e9ecef; /* Custom hover background color */
+  }
+  

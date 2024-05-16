@@ -1,5 +1,12 @@
 <form action="" method="post">
-    Name: <input type="text" value="<%= student.name %>" name="name"/> <br/>
-    Address: <input type="text"  name="address" value="<%= student.address %>"/> <br/>
+    Make: <input type="text" value="<%= car.make %>" name="make"/> <br/>
+    Model: <input type="text" value="<%= car.model %>" name="model"/> <br/>
+    Year: <input type="number" value="<%= car.year %>" name="year"/> <br/>
+    Price: <input type="number" value="<%= car.price %>" name="price"/> <br/>
+    Description: <textarea name="description"><%= car.description %></textarea> <br/>
+    Color: <input type="text" value="<%= car.color %>" name="color"/> <br/>
+    Images: <input type="text" value="<%= car.images[0]?.url %>" name="images[0].url" placeholder="Image URL"/> <br/>
+    Image Description: <input type="text" value="<%= car.images[0]?.description %>" name="images[0].description" placeholder="Image Description"/> <br/>
+    <!-- Add more image fields if necessary -->
     <input type="submit" value="Edit" /> <br/>
 </form>

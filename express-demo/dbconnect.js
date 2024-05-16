@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
-import express from "express";
+const mongoose=require('mongoose');
+const express =require('express');
 
 const func = async () => {
 
     let dbname = "hommod"
-    let something = await mongoose.connect('mongodb://atlas-sql-663da879b9468d378e18f945-t5q8j.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin').then(
+    let something = await mongoose.connect('mongodb://atlas-sql-663da879b9468d378e18f945-t5q8j.a.query.mongodb.net/wheelscape?ssl=true&authSource=admin').then(
 
         () => {
 
@@ -26,5 +26,4 @@ const func = async () => {
 
 }
 
-func();
-export { func }
+module.exports=func;
