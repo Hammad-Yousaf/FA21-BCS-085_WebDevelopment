@@ -1,12 +1,17 @@
-<h1>Login</h1>
-  <form action="/login" method="POST">
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required>
+
+<body id="carFormBody">
+    <div id="headingContainer">
+        <h2 id="carInfoTitle">Login</h2>
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required>
-    </div>
-    <button type="submit">Login</button>
-  </form>
+    <form id="carForm" class="custom-form login-form" action="/login" method="POST">
+        <div class="form-group">
+            <label for="login-email" class="form-label">Email:</label>
+            <input type="email" name="email" id="login-email" class="form-input" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password" class="form-label">Password:</label>
+            <input type="password" name="password" id="login-password" class="form-input" required>
+        </div>
+        <button type="submit" id="uniqueSubmitButton" class="form-button">Login</button>
+    </form>
+

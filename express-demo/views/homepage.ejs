@@ -39,7 +39,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- about section starts -->
+    <!-- about  starts -->
     <section id="about" class="about section-padding">
         <div class="container">
             <div class="row">
@@ -58,10 +58,11 @@
             </div>
         </div>
     </section>
-<!--more info about section-->
+
+    <!-- More info about  -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal('myModal')">&times;</span>
             <h3>Our Services Include:</h3>
             <ul>
                 <li><strong>Routine Maintenance:</strong> Oil changes, tire rotations, and brake inspections to keep your car running efficiently.</li>
@@ -75,7 +76,6 @@
             <p>Contact us for a detailed quote and to learn more about our competitive pricing.</p>
         </div>
     </div>
-    
    
 <!--service section-->
 <section class="services section-padding" id="services">
@@ -122,7 +122,7 @@
         </div>
     </div>
 </section>
-
+<!-- more info service section -->
 <div id="maintenanceModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal('maintenanceModal')">&times;</span>
@@ -296,27 +296,29 @@
 </div>
 
   
-
+<!-- js code -->
 <script>
-    function showModal() {
-        document.getElementById("myModal").style.display = "block";
-    }
-
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        var modal = document.getElementById("myModal");
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+     
     function openModal(modalId) {
         document.getElementById(modalId).style.display = 'block';
     }
     
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
+    }
+     window.onclick = function(event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+       }
+    }
+    window.onclick = function(event) {
+        var modals = ['myModal', 'maintenanceModal', 'performanceModal', 'servicingModal', 'customCarModal', 'classicCarModal', 'carDetailingModal'];
+        modals.forEach(function(modalId) {
+            var modal = document.getElementById(modalId);
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
     }
 </script>

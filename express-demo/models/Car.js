@@ -8,12 +8,12 @@ let carSchema = mongoose.Schema({
   price: Number,
   description: String,
   color: String,
-  // images: [
-  //   {
-  //     url: String,
-  //     description: String
-  //   }
-  // ]
+  images: [
+    {
+      url: String,
+      description: String
+    }
+  ]
 });
 
 let Car = mongoose.model("Car", carSchema);
