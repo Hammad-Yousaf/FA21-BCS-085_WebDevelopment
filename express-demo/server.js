@@ -35,20 +35,29 @@ const carRoutes = require('./routes/api/cars'); // Assuming your car routes are 
 server.use('/cars', carRoutes);
 
 // Auth Routes
-server.get("/cars", async (req, res) => {
+server.get("/cars/:page?", async (req, res) => {
   try {
-    const cars = await Car.find();
-    const pageTitle = "List of Cars";
-    const page = 1;
-    const total = cars.length;
-    const pageSize = 3; // Set your desired page size here
-    const totalPages = Math.ceil(total / pageSize); // Calculate total pages
-    res.render("carList", { pageTitle, cars, page, total, totalPages });
+    let page = req.params.page || 1;
+    let pageSize = 4; // Adjusted to display 4 records per page
+    let skip = pageSize * (page - 1);
+    let cars = await Car.find().skip(skip).limit(pageSize);
+    let total = await Car.countDocuments();
+    let totalPages = Math.ceil(total / pageSize);
+
+    res.render("carList", { 
+      pageTitle: "List All Cars",
+      cars,
+      total,
+      page,
+      pageSize,
+      totalPages,
+    });
   } catch (error) {
     console.error("Error fetching cars:", error);
     res.status(500).send("Internal Server Error");
   }
 });
+
 server.get("/cars/new", (req, res) => {
   res.render("form", { pageTitle: "Add New Car" });
 });
@@ -110,7 +119,7 @@ server.post("/form", async (req, res) => {
   try {
     const car = new Car(req.body);
     await car.save();
-    res.redirect("/");
+    res.redirect("/cars");
   } catch (error) {
     console.log(error);
   }
