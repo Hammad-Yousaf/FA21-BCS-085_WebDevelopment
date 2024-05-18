@@ -24,6 +24,7 @@ const User = require('./models/User');
 const Car = require('./models/Car');
 
 
+
 // Middleware
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
@@ -114,6 +115,7 @@ server.post("/form", async (req, res) => {
     console.log(error);
   }
 });
+
 
 server.get("/", (req, res) => {
   res.render("homepage");

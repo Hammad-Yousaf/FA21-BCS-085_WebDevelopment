@@ -3,123 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Information Form</title>
-    <style>
-        /* CSS styles */
-        #carFormBody {
-            font-family: Arial, sans-serif;
-            margin-top: 40px;
-            background-image: url('../public/images/207628.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        #headingContainer {
-            text-align: center;
-            margin-top: 70px;
-        }
-
-        #carInfoTitle {
-            color: white;
-            background-color: transparent;
-            padding: 10px;
-            border-radius: 8px;
-            display: inline-block;
-            text-decoration: underline;
-        }
-
-        form {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: transparent;
-            border: 2px solid white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            color: white;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            color: white;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-bottom: 1px solid white;
-        }
-
-        #uniqueSubmitButton {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 20px;
-            transition: background-color 0.3s;
-        }
-
-        #uniqueSubmitButton:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>New Car Information</title>
 </head>
 <body id="carFormBody">
-
-<div id="headingContainer">
-    <h2 id="carInfoTitle">Car Information Form</h2>
-</div>
-
-<form id="carForm" action="/cars/new" method="POST">
-    <label for="make">Make:</label>
-    <input type="text" id="make" name="make" required>
-
-    <label for="model">Model:</label>
-    <input type="text" id="model" name="model" required>
-
-    <label for="year">Year:</label>
-    <input type="number" id="year" name="year" required>
-
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" required>
-
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" rows="4" required></textarea>
-
-    <label for="color">Color:</label>
-    <input type="text" id="color" name="color" required>
-
-    <label for="images">Images:</label>
-    <div id="imageContainer">
-        <div class="imageEntry">
-            <label for="imageUrl">Image URL:</label>
-            <input type="text" id="imageUrl" name="images[0][url]">
-            <label for="imageDescription">Image Description:</label>
-            <input type="text" id="imageDescription" name="images[0][description]">
-        </div>
+    <div id="headingContainer">
+        <h2 id="carInfoTitle">Car Information Form</h2>
     </div>
-    <button type="button" onclick="addImageField()">Add Another Image</button>
 
-    <button id="uniqueSubmitButton" onclick="showSuccessMessage()">Submit</button>
-</form>
+    <form id="carForm" action="/cars/new" method="POST">
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required>
 
-<div id="successMessage" style="display:none; color: green;">Success! Your message has been submitted.</div>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
 
-<script>
-    function showSuccessMessage() {
-        var successMessage = document.getElementById("successMessage");
-        successMessage.style.display = "block";
-        setTimeout(function(){
-            successMessage.style.display = "none";
-        }, 3000); // Hide the message after 3 seconds
-    }
-</script>
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required>
 
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required>
+
+        <label for="images">Images:</label>
+        <div id="imageContainer">
+            <div class="imageEntry">
+                <label for="imageUrl">Image URL:</label>
+                <input type="text" id="imageUrl" name="images[0][url]">
+                <label for="imageDescription">Image Description:</label>
+                <input type="text" id="imageDescription" name="images[0][description]">
+            </div>
+        </div>
+        <button type="button" onclick="addImageField()">Add Another Image</button>
+
+        <button type="submit" id="uniqueSubmitButton">Submit</button>
+    </form>
+
+    <div id="successMessage" style="display:none; color: green;">Success! Your message has been submitted.</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let imageIndex = 1;
+
+            function addImageField() {
+                const imageContainer = document.getElementById('imageContainer');
+                const newImageEntry = document.createElement('div');
+                newImageEntry.className = 'imageEntry';
+                newImageEntry.innerHTML = `
+                    <label for="images[${imageIndex}][url]">Image URL:</label>
+                    <input type="text" id="images[${imageIndex}][url]" name="images[${imageIndex}][url]">
+                    <label for="images[${imageIndex}][description]">Image Description:</label>
+                    <input type="text" id="images[${imageIndex}][description]" name="images[${imageIndex}][description]">
+                `;
+                imageContainer.appendChild(newImageEntry);
+                imageIndex++;
+            }
+
+            window.addImageField = addImageField;
+        });
+
+        document.getElementById('carForm').addEventListener('submit', function(event) {
+            showSuccessMessage();
+        });
+    </script>
 </body>
 </html>
