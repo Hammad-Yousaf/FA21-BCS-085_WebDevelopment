@@ -32,6 +32,7 @@ router.post('/login', async (req, res) => {
   const user = await User.findOne({ email });
   if (user && await bcrypt.compare(password, user.password)) {
     req.session.userId = user._id;
+    req.session.user = user;
     res.redirect('/');
   } else {
     res.redirect('/login');

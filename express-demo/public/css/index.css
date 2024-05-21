@@ -162,7 +162,7 @@ body {
 }
 
 .overlay button {
-    color: #000;
+    color: #ffffff;
     background-color: #ffc107;
     border: none;
     padding: 10px 20px;
@@ -172,7 +172,7 @@ body {
 }
 
 .overlay button:hover {
-    background-color: #ffcd39;
+    background-color: #bb8d04;
 }
 
 /*

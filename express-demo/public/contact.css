@@ -81,6 +81,7 @@ label{
  }
 
 .info {
+    margin-top: 2rem;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
@@ -102,7 +103,7 @@ label{
     max-width: 100%;
     height: auto;
     border-radius: 1rem;
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 .forms-wrap {

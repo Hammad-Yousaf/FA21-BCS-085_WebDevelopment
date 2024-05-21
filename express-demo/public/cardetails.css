@@ -1,0 +1,18 @@
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.details-section {
+    padding: 20px;
+}
+
+.details-section h2 {
+    margin-bottom: 20px;
+}
+
+.details-section p {
+    font-size: 1.2rem;
+}

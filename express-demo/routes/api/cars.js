@@ -126,7 +126,7 @@ router.post('/new', async (req, res) => {
   try {
     const car = new Car(req.body);
     await car.save();
-    res.redirect('/car');
+    res.redirect('/cars');
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
