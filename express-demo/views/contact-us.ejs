@@ -60,16 +60,28 @@
             filter: blur(5px);
         }
         .popup-message {
-            display: none;
+            display: none; /* Initially hidden */
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Centering the popup */
             background-color: white;
             padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            color: black;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Adding a shadow effect */
+            z-index: 1000; /* Ensuring it's on top of other elements */
+            color: black; /* Setting text color */
+            max-width: 400px; /* Limiting maximum width */
+            text-align: center; /* Centering text */
+            display: flex; /* Using flexbox */
+            flex-direction: column; /* Arrange children in a column */
+            justify-content: center; /* Center children vertically */
+            align-items: center; /* Center children horizontally */
+        }
+        
+        .popup-message p {
+            margin: 0; /* Removing default margin for paragraphs */
+            line-height: 1.5; /* Adjusting line height for readability */
         }
     </style>
 </head>
@@ -153,6 +165,7 @@
 </main>
 <div class="popup-message" id="popup-message">
     <p>You must be logged in to access this page.</p>
+    <p>Redirecting....</p>
 </div>
 <script>
     document.getElementById('file-input').addEventListener('change', function() {
@@ -172,8 +185,6 @@
 
     // Get the modal
     var modal = document.getElementById("fileModal");
-
-    
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
