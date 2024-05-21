@@ -45,12 +45,20 @@
         <div class="details-section mt-5">
             <h2><%= car.make %> <%= car.model %></h2>
             <p>Year: <%= car.year %></p>
-            <p>Price: $<%= car.price %></p>
+            <p id="price">Price: <%= preferredPriceUnit === 'PKR' ? 'PKR' : '$' %> <%= car.price %></p>
+            <button onclick="refreshPage()">Convert to Rs</button>
             <p>Color: <%= car.color %></p>
             <p>Description: <%= car.description %></p>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function convertToRs(price) {
+            const convertedPrice = price * 160;
+            document.getElementById('price').innerText = `Price: Rs ${convertedPrice}`;
+            document.cookie = `preferredUnit=Rs; expires=Thu, 31 Dec 2099 23:59:59 GMT; path=/`;
+        }
+    </script>
 </body>
 </html>

@@ -5,7 +5,8 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const path = require("path");
 const fs = require("fs");
-const flush=require("connect-flash");
+const flush = require("connect-flash");
+const cookieParser = require("cookie-parser");
 const server = express();
 const expressLayouts = require("express-ejs-layouts");
 const { uploadOnCloudinary } = require("./utils/cloudinaryConfig");
@@ -26,6 +27,7 @@ mongoose.connect("mongodb+srv://hammadyousuf87:hammad123@cluster0.utgeoal.mongod
   });
 
 // Middleware
+server.use(cookieParser());
 server.use(express.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
@@ -111,7 +113,7 @@ server.get("/cars/:page?", async (req, res) => {
 
     console.log("Admin:", isAdmin)
 
-    res.render("carList", { 
+    res.render("carList", {
       pageTitle: "List All Cars",
       cars,
       total,
@@ -142,7 +144,7 @@ server.post("/form", async (req, res) => {
 
 server.get("/homepage", (req, res) => {
   res.render("homepage");
-}); 
+});
 
 server.get("/", (req, res) => {
   res.render("homepage");
@@ -179,9 +181,19 @@ server.post("/upload", upload.single("image"), async (req, res) => {
   }
 });
 
-const { ObjectId } = require('mongoose').Types; 
+const { ObjectId } = require('mongoose').Types;
 
 server.get('/cars/details/:id', async (req, res) => {
+  const preferredPriceUnit = req.params?.preferredPriceUnit || "USD";
+
+  //save cookie only if value is PKR
+  if (preferredPriceUnit == "PKR") {
+    res.cookie('preferredPriceUnit', preferredPriceUnit, { maxAge: 900000, httpOnly: true });
+  }
+
+  
+
+
   const id = req.params.id;
   if (!ObjectId.isValid(id)) {
     return res.status(400).send('Invalid ID');
@@ -192,7 +204,13 @@ server.get('/cars/details/:id', async (req, res) => {
     if (!car) {
       return res.status(404).send('Car not found');
     }
-    res.render('carDetails', { car });
+
+    // check if there is a cookie for price unit then convert price to PKR
+    if (req.cookies.get('preferredPriceUnit') == "PKR" || preferredPriceUnit == "PKR") {
+      car.price = car.price * 170;
+    }
+
+    res.render('carDetails', { car, preferredPriceUnit });
   } catch (error) {
     console.error("Error fetching car details:", error);
     res.status(500).send("Internal Server Error");
