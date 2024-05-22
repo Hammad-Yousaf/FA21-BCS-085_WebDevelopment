@@ -275,9 +275,13 @@
               Account
             </a>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/login">Login</a></li>
-                <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
-                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
+                <% if (loggedIn) { %>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <% } else { %>
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
+                <% } %>
             </ul>
           </li>
         </ul>

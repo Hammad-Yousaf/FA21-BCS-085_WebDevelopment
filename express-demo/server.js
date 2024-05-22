@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const bcrypt = require('bcrypt');
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const bcrypt = require("bcrypt");
 const path = require("path");
 const fs = require("fs");
 const flash = require("connect-flash");
@@ -14,14 +14,17 @@ const { upload } = require("./middleware/multerConfig");
 const app = express();
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://hammadyousuf87:hammad123@cluster0.utgeoal.mongodb.net/")
+mongoose
+  .connect(
+    "mongodb+srv://hammadyousuf87:hammad123@cluster0.utgeoal.mongodb.net/"
+  )
   .then(() => {
     console.log("DB CONNECTED");
     app.listen(3000, () => {
       console.log("Server started at http://localhost:3000");
     });
   })
-  .catch(err => {
+  .catch((err) => {
     console.error("Error connecting to MongoDB:", err);
   });
 
@@ -29,9 +32,9 @@ mongoose.connect("mongodb+srv://hammadyousuf87:hammad123@cluster0.utgeoal.mongod
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
+app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
 app.use(express.static("public"));
-app.use('/cars/css', express.static('public/css'));
+app.use("/cars/css", express.static("public/css"));
 app.use(flash());
 
 app.set("view engine", "ejs");
@@ -43,23 +46,23 @@ const isAuthenticated = (req, res, next) => {
   if (req.session.user) {
     return next();
   }
-  res.redirect('/login');
+  res.redirect("/login");
 };
 
 // Routes
-const orderRoutes = require('./routes/api/orders');
-const carRoutes = require('./routes/api/cars');
-app.use('/orders', orderRoutes);
-app.use('/cars', carRoutes);
+const orderRoutes = require("./routes/api/orders");
+const carRoutes = require("./routes/api/cars");
+app.use("/orders", orderRoutes);
+app.use("/cars", carRoutes);
 
 // User and Car models
-const User = require('./models/User');
-const Car = require('./models/Car');
+const User = require("./models/User");
+const Car = require("./models/Car");
 
 // Authentication middleware
 const isUnauthenticated = (req, res, next) => {
   if (req.session.user) {
-    return res.redirect('/');
+    return res.redirect("/");
   }
   next();
 };
@@ -69,6 +72,16 @@ const isUnauthenticated = (req, res, next) => {
 // app.get("/", (req, res) => {
 //   res.render("home");
 // });
+
+app.use((req, res, next) => {
+  if (req.session.user) {
+    res.locals.loggedIn = true;
+  } else {
+    res.locals.loggedIn = false;
+  }
+  next();
+});
+
 app.get("/signup", isUnauthenticated, (req, res) => {
   res.render("signup");
 });
@@ -83,10 +96,10 @@ app.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, email, password: hashedPassword });
     await user.save();
-    res.redirect('/login');
+    res.redirect("/login");
   } catch (error) {
     console.error("Error during signup:", error);
-    res.redirect('/signup');
+    res.redirect("/signup");
   }
 });
 
@@ -94,28 +107,27 @@ app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (user && await bcrypt.compare(password, user.password)) {
+    if (user && (await bcrypt.compare(password, user.password))) {
       req.session.user = user; // Storing the full user object in session
-      res.redirect('/');
+      res.redirect("/");
     } else {
-      res.redirect('/login');
+      res.redirect("/login");
     }
   } catch (error) {
     console.error("Error during login:", error);
-    res.redirect('/login');
+    res.redirect("/login");
   }
 });
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.redirect('/');
+  res.redirect("/");
 });
 
 app.get("/contact-us", (req, res) => {
   const showMessage = !req.session.user;
   res.render("contact-us", { showMessage });
 });
-
 
 app.get("/cars/:page?", async (req, res) => {
   try {
@@ -135,7 +147,7 @@ app.get("/cars/:page?", async (req, res) => {
       page,
       pageSize,
       totalPages,
-      isAdmin
+      isAdmin,
     });
   } catch (error) {
     console.error("Error fetching cars:", error);
@@ -181,7 +193,9 @@ app.post("/upload", upload.single("image"), async (req, res) => {
     if (imageUrl) {
       return res.redirect("/cars");
     } else {
-      return res.status(500).json({ error: "Failed to upload image to Cloudinary" });
+      return res
+        .status(500)
+        .json({ error: "Failed to upload image to Cloudinary" });
     }
   } catch (error) {
     console.error("Error:", error);
@@ -193,33 +207,41 @@ app.post("/upload", upload.single("image"), async (req, res) => {
   }
 });
 
-const { ObjectId } = require('mongoose').Types;
+const { ObjectId } = require("mongoose").Types;
 
-app.get('/cars/details/:id', async (req, res) => {
-  const preferredPriceUnit = req.query.preferredPriceUnit || req.cookies.preferredPriceUnit || "USD";
+app.get("/cars/details/:id", async (req, res) => {
+  const preferredPriceUnit =
+    req.query.preferredPriceUnit || req.cookies.preferredPriceUnit || "USD";
 
   if (preferredPriceUnit === "PKR") {
-    res.cookie('preferredPriceUnit', preferredPriceUnit, { maxAge: 900000, httpOnly: true });
+    res.cookie("preferredPriceUnit", preferredPriceUnit, {
+      maxAge: 900000,
+      httpOnly: true,
+    });
   }
 
   const id = req.params.id;
   if (!ObjectId.isValid(id)) {
-    return res.status(400).send('Invalid ID');
+    return res.status(400).send("Invalid ID");
   }
 
   try {
     const car = await Car.findById(id);
     if (!car) {
-      return res.status(404).send('Car not found');
+      return res.status(404).send("Car not found");
     }
 
     if (preferredPriceUnit === "PKR") {
       car.price = car.price * 170;
     }
 
-    res.render('carDetails', { car, preferredPriceUnit, isAuthenticated: req.session.user ? true : false });
+    res.render("carDetails", {
+      car,
+      preferredPriceUnit,
+      isAuthenticated: req.session.user ? true : false,
+    });
   } catch (error) {
     console.error("Error fetching car details:", error);
     res.status(500).send("Internal Server Error");
   }
-}); 
+});
