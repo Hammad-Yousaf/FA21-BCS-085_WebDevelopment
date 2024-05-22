@@ -65,6 +65,10 @@ const isUnauthenticated = (req, res, next) => {
 };
 
 // Routes
+
+// app.get("/", (req, res) => {
+//   res.render("home");
+// });
 app.get("/signup", isUnauthenticated, (req, res) => {
   res.render("signup");
 });
@@ -111,6 +115,7 @@ app.get("/contact-us", (req, res) => {
   const showMessage = !req.session.user;
   res.render("contact-us", { showMessage });
 });
+
 
 app.get("/cars/:page?", async (req, res) => {
   try {
@@ -217,4 +222,4 @@ app.get('/cars/details/:id', async (req, res) => {
     console.error("Error fetching car details:", error);
     res.status(500).send("Internal Server Error");
   }
-});
+}); 

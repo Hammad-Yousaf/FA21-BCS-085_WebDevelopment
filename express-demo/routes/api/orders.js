@@ -26,18 +26,28 @@ router.post('/buy/:carId', isAuthenticated, async (req, res) => {
 });
 
 // Route to display order confirmation
-router.get('/orders/:orderId', isAuthenticated, async (req, res) => {
+const { ObjectId } = require('mongoose').Types;
+
+router.get('/:orderId', isAuthenticated, async (req, res) => {
+  const orderId = req.params.orderId;
+
+  // Validate the ID
+  if (!ObjectId.isValid(orderId)) {
+    return res.status(400).send('Invalid ID format');
+  }
+
   try {
-    const order = await Order.findById(req.params.orderId).populate('car').populate('user');
+    const order = await Order.findById(orderId).populate('car').populate('user');
     if (!order) {
       return res.status(404).send('Order not found');
     }
 
-    res.render('order-confirmation', { order });
+    res.render('order', { order });
   } catch (error) {
     console.error('Error fetching order:', error);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 module.exports = router;

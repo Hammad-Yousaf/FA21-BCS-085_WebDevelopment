@@ -1,9 +1,8 @@
-
 <body id="carFormBody">
     <div id="headingContainer">
         <h2 id="carInfoTitle">Sign-up</h2>
     </div>
-    <form id="headingContainer" class="custom-form signup-form" action="/signup" method="POST">
+    <form class="custom-form signup-form clearfix" action="/signup" method="POST">
         <div class="form-group">
             <label for="signup-username" class="form-label">Username:</label>
             <input type="text" name="username" id="signup-username" class="form-input" required>
@@ -16,6 +15,9 @@
             <label for="signup-password" class="form-label">Password:</label>
             <input type="password" name="password" id="signup-password" class="form-input" required>
         </div>
-        <button type="submit" id="uniqueSubmitButton" class="form-button">Sign Up</button>
+        <button style="float:left" type="submit" id="uniqueSubmitButton" class="form-button">Sign Up</button>
+        <p style="float: right; margin-top: 33px; color: white;">
+            <a style="color: white;" href="/login">Already have an account!</a>
+        </p>
     </form>
-
+</body>
