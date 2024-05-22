@@ -47,9 +47,7 @@ const isAuthenticated = (req, res, next) => {
 };
 app.use((req, res, next) => {
   if (req.session.user) {
-    console.log(req.session.user);
     res.locals.loggedIn = true;
-    console.log(res.locals.loggedIn)
   } else {
     res.locals.loggedIn = false;
   }
