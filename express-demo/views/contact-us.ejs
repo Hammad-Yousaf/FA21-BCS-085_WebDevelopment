@@ -73,12 +73,10 @@
             color: black; /* Setting text color */
             max-width: 400px; /* Limiting maximum width */
             text-align: center; /* Centering text */
-            display: flex; /* Using flexbox */
             flex-direction: column; /* Arrange children in a column */
             justify-content: center; /* Center children vertically */
             align-items: center; /* Center children horizontally */
         }
-        
         .popup-message p {
             margin: 0; /* Removing default margin for paragraphs */
             line-height: 1.5; /* Adjusting line height for readability */
@@ -197,7 +195,7 @@
     window.onload = function() {
         if (<%= showMessage %>) {
             const popupMessage = document.getElementById('popup-message');
-            popupMessage.style.display = 'block';
+            popupMessage.style.display = 'flex';
             setTimeout(() => {
                 window.location.href = '/login';
             }, 3000);

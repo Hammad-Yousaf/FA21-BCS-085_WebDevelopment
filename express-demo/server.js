@@ -69,6 +69,16 @@ const isUnauthenticated = (req, res, next) => {
 // app.get("/", (req, res) => {
 //   res.render("home");
 // });
+app.use((req, res, next) => {
+  if (req.session.user) {
+    console.log(req.session.user);
+    res.locals.loggedIn = true;
+    console.log(res.locals.loggedIn)
+  } else {
+    res.locals.loggedIn = false;
+  }
+  next();
+});
 app.get("/signup", isUnauthenticated, (req, res) => {
   res.render("signup");
 });
