@@ -260,15 +260,24 @@
           <li class="nav-item">
             <a class="nav-link" href="/cars">Products   |</a>
           </li>
-          <li class="nav-item">
+         
+          <!-- <li class="nav-item">
             <a class="nav-link" href="/homepage#portfolio">Portfolio   |</a>
-          </li>
+          </li> -->
           <!-- <li class="nav-item">
             <a class="nav-link" href="/ajaxapi ">Ajax api</a>
           </li> -->
           <li class="nav-item">
             <a class="nav-link" href="/contact-us">Contact Us   |</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/orders">Orders  |</a>
+            <li class="nav-item">
+              <% if (user) { %>
+                <span class="nav-link">Welcome, <%= user.username %></span>
+              <% } %>
+            </li>
+            
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">

@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const expressLayouts = require("express-ejs-layouts");
 const { uploadOnCloudinary } = require("./utils/cloudinaryConfig");
 const { upload } = require("./middleware/multerConfig");
+const Order=require('./models/order');
 
 const app = express();
 
@@ -53,6 +54,24 @@ app.use((req, res, next) => {
   }
   next();
 });
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+}); 
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
+
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.user.role === 'admin') {
+    return next();
+  }
+  res.redirect('/');
+}
+
 // Routes
 const orderRoutes = require('./routes/api/orders');
 const carRoutes = require('./routes/api/cars');
@@ -103,7 +122,11 @@ app.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (user && await bcrypt.compare(password, user.password)) {
-      req.session.user = user; // Storing the full user object in session
+      req.session.user = {
+        _id: user._id,
+        username: user.username,
+        role: user.role
+      };
       res.redirect('/');
     } else {
       res.redirect('/login');
@@ -113,6 +136,7 @@ app.post("/login", async (req, res) => {
     res.redirect('/login');
   }
 });
+
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
@@ -231,3 +255,28 @@ app.get('/cars/details/:id', async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 }); 
+app.get('/orders', async (req, res) => {
+  if (!req.session.user) {
+    return res.redirect('/login');
+  }
+
+  const userId = req.session.user._id;
+  const isAdmin = req.session.user.role === 'admin';
+
+  try {
+    let orders;
+    if (isAdmin) {
+      orders = await Order.find().populate('car').populate('user');
+    } else {
+      orders = await Order.find({ user: userId }).populate('car');
+    }
+
+    res.render('order1', {
+      orders,
+      isAdmin,
+    });
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
