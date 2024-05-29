@@ -1,0 +1,20 @@
+.carousel-item img {
+    /* width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover; */
+    background-size: cover;
+    background-position: center;
+}
+
+.details-section {
+    padding: 20px;
+}
+
+.details-section h2 {
+    margin-bottom: 20px;
+}
+
+.details-section p {
+    font-size: 1.2rem;
+}

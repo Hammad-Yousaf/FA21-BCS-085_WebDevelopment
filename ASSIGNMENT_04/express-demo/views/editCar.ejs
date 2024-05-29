@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/icon" href="/images/sport-car.png" />
+    <title>Edit Car Information</title>
+</head>
+<style>
+    #carFormBody {
+        font-family: Arial, sans-serif;
+        margin-top: 40px;
+        background-image: url('/images/207628.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    #headingContainer {
+        text-align: center; /* Center the content horizontally */
+        margin-top: 70px; /* Adjust as needed */
+    }
+    
+    #carInfoTitle {
+        color: white; /* Set text color to white */
+        background-color: transparent; 
+        padding: 10px; /* Add padding for better visibility */
+        border-radius: 8px; /* Add border radius for rounded corners */
+        display: inline-block; /* Ensure the container only takes the necessary width */
+        text-decoration: underline; /
+    }
+    
+    #carInfoTitle {
+        color: white; /* Set text color to white */
+        text-align: center; /* Center the text horizontally */
+        width: 50%; /* Set a width to limit the width of the heading */
+        margin: 0 auto; /* Center the heading horizontally */
+        margin-top: 20px; /* Adjust margin top */
+        position: relative; /* Ensure proper positioning */
+        z-index: 100; /* Ensure the heading is above the navbar */
+    }
+    
+    form {
+        max-width: 600px;
+        margin: 20px auto; /* Adjust margin top and bottom */
+        padding: 20px;
+        background-color: transparent;  
+        border: 2px solid white; /* Add a white border */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+        display: block;
+        margin-top: 10px;
+        color: white; /* Set text color to white */
+    }
+    
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        color: white; /* Set text color to white */
+        background-color: rgba(255, 255, 255, 0.2); /* Add a transparent background */
+        border: none;
+        border-bottom: 1px solid white; /* Add a white border bottom */
+    }
+    
+    #uniqueSubmitButton {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px; /* Make the button round */
+        transition: background-color 0.3s; /* Smooth transition for background color change */
+    }
+    
+    #uniqueSubmitButton:hover {
+        background-color: #45a049;
+    }
+    
+    
+</style>
+<body id="carFormBody">
+
+<div id="headingContainer">
+    <h2 id="carInfoTitle">Edit Car Information</h2>
+</div>
+
+<form id="carForm" action="/cars/<%= car._id %>/edit" method="POST">
+    <label for="make">Make:</label>
+    <input type="text" id="make" name="make" value="<%= car.make %>" required>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" value="<%= car.model %>" required>
+
+    <label for="year">Year:</label>
+    <input type="number" id="year" name="year" value="<%= car.year %>" required>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" value="<%= car.price %>" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4" required><%= car.description %></textarea>
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="color" value="<%= car.color %>" required>
+
+    <label for="images">Images:</label>
+    <div id="imageContainer">
+        <% car.images.forEach((image, index) => { %>
+        <div class="imageEntry">
+            <label for="images[<%= index %>].url">Image URL:</label>
+            <input type="text" id="images[<%= index %>].url" name="images[<%= index %>].url" value="<%= image.url %>" placeholder="Image URL">
+            <label for="images[<%= index %>].description">Image Description:</label>
+            <input type="text" id="images[<%= index %>].description" name="images[<%= index %>].description" value="<%= image.description %>" placeholder="Image Description">
+        </div>
+        <% }); %>
+    </div>
+    <button type="button" onclick="addImageField()">Add Another Image</button>
+
+    <button type="submit" id="uniqueSubmitButton">Submit</button>
+
+    <!-- Hidden input to hold the number of initial images -->
+    <input type="hidden" id="initialImageCount" value="<%= car.images.length %>">
+</form>
+
+    <!-- <div id="successMessage" style="display:none; color: green;">Success! Your message has been submitted.</div> -->
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let imageIndex = document.getElementById('initialImageCount').value;
+
+        function addImageField() {
+            const imageContainer = document.getElementById('imageContainer');
+            const newImageEntry = document.createElement('div');
+            newImageEntry.className = 'imageEntry';
+            newImageEntry.innerHTML = `
+                <label for="images[${imageIndex}].url">Image URL:</label>
+                <input type="text" id="images[${imageIndex}].url" name="images[${imageIndex}].url" placeholder="Image URL">
+                <label for="images[${imageIndex}].description">Image Description:</label>
+                <input type="text" id="images[${imageIndex}].description" name="images[${imageIndex}].description" placeholder="Image Description">
+            `;
+            imageContainer.appendChild(newImageEntry);
+            imageIndex++;
+        }
+
+        document.getElementById('carForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from actually submitting
+            var successMessage = document.getElementById("successMessage");
+            successMessage.style.display = "block";
+            setTimeout(function() {
+                successMessage.style.display = "none";
+            }, 3000); // Hide the message after 3 seconds
+        });
+
+        // Make addImageField function globally accessible
+        window.addImageField = addImageField;
+    });
+</script> -->
+
+</body>
+</html>

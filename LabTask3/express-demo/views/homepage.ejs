@@ -1,0 +1,324 @@
+
+      <!--carousel-->
+             
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active carousel-img1">
+                <div class="carousel-caption">
+                    <h5>Discover Your Dream Car</h5>
+                    <p>Explore our wide range of luxury cars designed to fulfill your desires.</p>
+                    <!-- <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p> -->
+                </div>
+            </div>
+            <div class="carousel-item carousel-img2">
+                <div class="carousel-caption">
+                    <h5>Ultimate Performance</h5>
+                    <p>Drive with power and confidence in our top-of-the-line sports cars.</p>
+                    <!-- <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p> -->
+                </div>
+            </div>
+            <div class="carousel-item carousel-img3">
+                <div class="carousel-caption">
+                    <h5>Find Your Perfect Ride</h5>
+                    <p>Discover the perfect blend of style, comfort, and technology in our latest models.</p>
+                    <!-- <p><a href="#" class="btn btn-warning mt-3">Learn More</a></p> -->
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- about  starts -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    <div class="about-img">
+                        <img src="images/blue-car-speed-motion-stretch-style-removebg-preview.png" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+                    <div class="about-text">
+                        <h2>We Provide the Best Quality <br/> Car Services</h2>
+                        <p>Whether it's routine maintenance, repairs, or upgrades, we are dedicated to providing top-notch car services. Our team of skilled professionals ensures that your vehicle receives the care and attention it deserves, so you can enjoy a smooth and reliable driving experience. Trust us with your car, and experience the difference!</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('myModal')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More info about  -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('myModal')">&times;</span>
+            <h3>Our Services Include:</h3>
+            <ul>
+                <li><strong>Routine Maintenance:</strong> Oil changes, tire rotations, and brake inspections to keep your car running efficiently.</li>
+                <li><strong>Repairs:</strong> From minor fixes to major overhauls, we handle all types of repair work with precision.</li>
+                <li><strong>Upgrades:</strong> Enhance your vehicle's performance and appearance with our high-quality upgrade services.</li>
+            </ul>
+            <h3>Customer Testimonials:</h3>
+            <p>"The service here is fantastic! My car has never run better." - Jane D.</p>
+            <p>"Highly recommend for their professional and thorough work." - John S.</p>
+            <h3>Pricing:</h3>
+            <p>Contact us for a detailed quote and to learn more about our competitive pricing.</p>
+        </div>
+    </div>
+   
+<!--service section-->
+<section class="services section-padding" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center pb-5">
+                    <h2>Our Car Services</h2>
+                    <p>Discover the range of car services we offer to keep your vehicle in top condition.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-4">
+                <div class="card text-white text-center bg-dark pb-2 service-card">
+                    <div class="card-body">
+                        <i class="bi bi-gear-wide"></i>
+                        <h3 class="card-title">Maintenance and Repairs</h3>
+                        <p class="lead">Keep your car running smoothly with our comprehensive maintenance and repair services. From oil changes to engine repairs, we have you covered.</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('maintenanceModal')">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <div class="card text-white text-center bg-dark pb-2 service-card">
+                    <div class="card-body">
+                         <i class="bi bi-speedometer2"></i>  
+                         <h3 class="card-title">Performance Upgrades</h3>
+                        <p class="lead">Enhance your car's performance and take it to the next level with our range of performance upgrades. From exhaust systems to turbochargers, we'll help you unleash its full potential.</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('performanceModal')">Read More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <div class="card text-white text-center bg-dark pb-2 service-card">
+                    <div class="card-body">
+                        <i class="bi bi-calendar-check"></i>
+                        <h3 class="card-title">Scheduled Servicing</h3>
+                        <p class="lead">Ensure your car stays in peak condition with our scheduled servicing plans. We'll take care of everything, so you can enjoy worry-free driving.</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('servicingModal')">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- more info service section -->
+<div id="maintenanceModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('maintenanceModal')">&times;</span>
+        <h3>Services Offered:</h3>
+        <ul>
+            <li><strong>Oil Change:</strong> $50</li>
+            <li><strong>Tire Rotation:</strong> $20</li>
+            <li><strong>Brake Inspection:</strong> $30</li>
+            <li><strong>Engine Diagnostics:</strong> $50</li>
+            <li><strong>Fluid Checks and Top-up:</strong> $15</li>
+            <li><strong>Battery Testing and Replacement:</strong> $40 (plus cost of battery)</li>
+            <li><strong>Transmission Service:</strong> $100 (fluid change and inspection)</li>
+            <li><strong>Electrical System Diagnosis and Repair:</strong> $80 (per hour)</li>
+            <li><strong>Steering and Suspension Repairs:</strong> Prices vary based on the specific repair needed</li>
+            <li><strong>Exhaust System Inspection and Repair:</strong> Prices vary based on the specific repair needed</li>
+        </ul>
+        <p>Contact us for a comprehensive quote tailored to your specific needs.</p>
+    </div>
+</div>
+
+<div id="performanceModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('performanceModal')">&times;</span>
+          <h3>Popular Upgrades:</h3>
+        <ul>
+            <li><strong>Custom Exhaust System:</strong> Starting from $500</li>
+            <li><strong>Turbocharger Installation:</strong> Starting from $1000</li>
+            <li><strong>Suspension Enhancement:</strong> Starting from $300</li>
+            <li><strong>Air Intake System Upgrade:</strong> $200</li>
+            <li><strong>Performance Tuning and ECU Remapping:</strong> $300</li>
+            <li><strong>Brake System Upgrade:</strong> $400 (includes pads and rotors)</li>
+            <li><strong>Wheel and Tire Upgrades:</strong> Prices vary based on selected wheels and tires</li>
+            <li><strong>Engine Swap and Rebuild:</strong> Prices vary based on the specific engine and labor involved</li>
+            <li><strong>High-Performance Cooling System:</strong> $600</li>
+            <li><strong>Exterior Aero Enhancements:</strong> Prices vary based on selected enhancements</li>
+        </ul>
+        <p>Prices may vary depending on the make and model of your vehicle. Contact us for a personalized consultation.</p>
+    </div>
+</div>
+
+<div id="servicingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('servicingModal')">&times;</span>
+        <h3>Service Packages:</h3>
+        <ul>
+            <li><strong>Basic Package:</strong> $100 (Includes oil change, fluid top-up, and visual inspection)</li>
+            <li><strong>Standard Package:</strong> $200 (Includes basic package plus tire rotation and brake inspection)</li>
+            <li><strong>Premium Package:</strong> $300 (Includes standard package plus engine diagnostics and comprehensive inspection)</li>
+            <li><strong>Wheel Alignment and Balancing:</strong> $80</li>
+            <li><strong>Spark Plug Replacement:</strong> $50</li>
+            <li><strong>Air Filter Replacement:</strong> $20</li>
+            <li><strong>Timing Belt Replacement:</strong> $150</li>
+            <li><strong>Fuel System Cleaning:</strong> $80</li>
+            <li><strong>Exhaust System Inspection and Repair:</strong> Prices vary based on the specific repair needed</li>
+            <li><strong>Transmission Fluid Flush:</strong> $120</li>
+        </ul>
+        <p>Customized servicing plans are available based on your driving habits and vehicle requirements.</p>
+    </div>
+</div>
+
+
+
+<!-- End Service Section -->
+<!--portfolio-->
+<section id="portfolio" class="portfolio section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center pb-5">
+                    <h2>Our Car Projects</h2>
+                    <p>Explore our portfolio of car-related projects.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="portfolio-item">
+                    <img src="images/s1.png" alt="">
+                    <div class="overlay">
+                        <h3 class="title">Custom Car Modification</h3>
+                        <p class="description">Explore our custom car modification projects designed to elevate performance and style.</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('customCarModal')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="portfolio-item">
+                    <img src="images/s2.png" alt="">
+                    <div class="overlay">
+                        <h3 class="title">Classic Car Restoration</h3>
+                        <p class="description">Discover our classic car restoration projects, where we bring vintage cars back to their former glory.</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('classicCarModal')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="portfolio-item">
+                    <img src="images/s3.png" alt="">
+                    <div class="overlay">
+                        <h3 class="title">Car Detailing Showcase</h3>
+                        <p class="description">Explore our car detailing projects showcasing meticulous attention to every detail.</p>
+                        <button class="btn btn-warning learn-more-button" onclick="openModal('carDetailingModal')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="detailsContainer" class="row mt-5"></div> Placeholder for loading additional details -->
+    </div>
+  </section>
+  <div id="customCarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('customCarModal')">&times;</span>
+        <h3>Custom Car Modification:</h3>
+        <h4>Services Offered:</h4>
+        <ul>
+            <li><strong>Body Kit Installation:</strong> Starting from $1000</li>
+            <li><strong>Performance Chip Tuning:</strong> $500</li>
+            <li><strong>Suspension Upgrades:</strong> Starting from $300</li>
+            <li><strong>Custom Paint Job:</strong> Prices vary based on design and complexity</li>
+            <li><strong>Interior Customization:</strong> Prices vary based on materials and features</li>
+            <li><strong>Exhaust System Customization:</strong> Starting from $500</li>
+            <li><strong>Lighting Upgrades:</strong> Starting from $200</li>
+            <li><strong>Wheel and Tire Customization:</strong> Prices vary based on selected wheels and tires</li>
+            <li><strong>Performance Brake System:</strong> Starting from $600 (includes pads and rotors)</li>
+            <li><strong>Audio System Upgrade:</strong> Prices vary based on components and installation</li>
+        </ul>
+        <p>Contact us for a personalized consultation and quote.</p>
+    </div>
+</div>
+
+<div id="classicCarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('classicCarModal')">&times;</span>
+        <h3>Classic Car Restoration:</h3>
+        <h4>Services Offered:</h4>
+        <ul>
+            <li><strong>Frame-off Restoration:</strong> Starting from $10,000</li>
+            <li><strong>Engine Rebuild:</strong> Prices vary based on the extent of restoration</li>
+            <li><strong>Body Panel Repair and Replacement:</strong> Prices vary based on the condition of the car</li>
+            <li><strong>Interior Restoration:</strong> Prices vary based on materials and originality</li>
+            <li><strong>Paint Restoration:</strong> Starting from $1500</li>
+            <li><strong>Chrome Plating and Polishing:</strong> Prices vary based on parts</li>
+            <li><strong>Electrical System Overhaul:</strong> Prices vary based on complexity</li>
+            <li><strong>Brake System Restoration:</strong> Starting from $800</li>
+            <li><strong>Period-Correct Parts Sourcing:</strong> Prices vary based on availability</li>
+            <li><strong>Final Detailing and Finishing Touches:</strong> Starting from $500</li>
+        </ul>
+        <p>Contact us to discuss the restoration of your classic car.</p>
+    </div>
+</div>
+
+<div id="carDetailingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('carDetailingModal')">&times;</span>
+        <h3>Car Detailing Showcase:</h3>
+        <h4>Services Offered:</h4>
+        <ul>
+            <li><strong>Exterior Wash and Wax:</strong> $50</li>
+            <li><strong>Interior Vacuuming and Shampooing:</strong> $80</li>
+            <li><strong>Clay Bar Treatment:</strong> $100</li>
+            <li><strong>Paint Correction and Polishing:</strong> Starting from $150</li>
+            <li><strong>Leather Cleaning and Conditioning:</strong> $50</li>
+            <li><strong>Headlight Restoration:</strong> $30 per headlight</li>
+            <li><strong>Engine Bay Detailing:</strong> $50</li>
+            <li><strong>Window Tinting:</strong> Prices vary based on vehicle size and type of film</li>
+            <li><strong>Wheel and Tire Detailing:</strong> $30</li>
+            <li><strong>Odor Removal:</strong> Starting from $50</li>
+        </ul>
+        <p>Contact us to schedule your car detailing appointment.</p>
+    </div>
+</div>
+
+  
+<!-- js code -->
+<script>
+     
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+    }
+    
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+     window.onclick = function(event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+       }
+    }
+    window.onclick = function(event) {
+        var modals = ['myModal', 'maintenanceModal', 'performanceModal', 'servicingModal', 'customCarModal', 'classicCarModal', 'carDetailingModal'];
+        modals.forEach(function(modalId) {
+            var modal = document.getElementById(modalId);
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+</script>
