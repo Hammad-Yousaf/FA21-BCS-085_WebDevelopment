@@ -1,0 +1,75 @@
+#carFormBody {
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+    background-image: url('./images/207628.jpg');
+    background-size: cover;
+    background-position: center;
+}
+#headingContainer {
+    text-align: center; 
+    margin-top: 70px; 
+}
+
+#carInfoTitle {
+    color: white; 
+    background-color: transparent; 
+    padding: 10px; 
+    border-radius: 8px; 
+    display: inline-block; 
+    text-decoration: underline; 
+}
+
+#carInfoTitle {
+    color: white; 
+    text-align: center; 
+    width: 50%; 
+    margin: 0 auto; 
+    margin-top: 20px; 
+    position: relative; 
+    z-index: 100;
+}
+form {
+    max-width: 600px;
+    margin: 20px auto; 
+    padding: 20px;
+    background-color: transparent;  
+    border: 2px solid white; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: white; 
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    color: white; 
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-bottom: 1px solid white; 
+}
+
+#uniqueSubmitButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px; 
+    transition: background-color 0.3s; 
+}
+
+#uniqueSubmitButton:hover {
+    background-color: #45a049;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" href="/path/to/your/css">
+    <style>
+        .orders-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        .order-card {
+            border: 1px solid #ccc;
+            padding: 16px;
+            margin: 16px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Orders</h1>
+    <div class="orders-container">
+        <% if (isAdmin) { %>
+            <h2>All Booked Cars</h2>
+            <% orders.forEach(order => { %>
+                <div class="order-card">
+                    <p>Order ID: <%= order._id %></p>
+                    <p><strong>User:</strong> <%= order.user.username %></p>
+                    <p><strong>Car:</strong> <%= order.car.make %> <%= order.car.model %></p>
+                    <p><strong>Status:</strong> <%= order.status %></p>
+                    <p><strong>Created At:</strong> <%= order.createdAt.toDateString() %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <h2>Your Booked Cars</h2>
+            <% if (orders.length > 0) { %>
+                <% orders.forEach(order => { %>
+                    <div class="order-card">
+                        <p>Order ID: <%= order._id %></p>
+                        <p><strong>Car:</strong> <%= order.car.make %> <%= order.car.model %></p>
+                        <p><strong>Status:</strong> <%= order.status %></p>
+                        <p><strong>Created At:</strong> <%= order.createdAt.toDateString() %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>You have not booked any cars yet.</p>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>
