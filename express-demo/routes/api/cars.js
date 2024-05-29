@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Car = require("../../models/Car");
 
-
+//new
 router.post("/api/cars", async (req, res) => {
   try {
     let car = new Car(req.body);
@@ -14,7 +14,7 @@ router.post("/api/cars", async (req, res) => {
   }
 });
 
-
+//delete by id
 router.delete("/:id", async (req, res) => {
   try {
     let car = await Car.findByIdAndDelete(req.params.id);
@@ -41,7 +41,7 @@ router.get("/:id/delete", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
+//edit by id
 router.get('/:id/edit', async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);

@@ -126,39 +126,5 @@
     <input type="hidden" id="initialImageCount" value="<%= car.images.length %>">
 </form>
 
-    <!-- <div id="successMessage" style="display:none; color: green;">Success! Your message has been submitted.</div> -->
-
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        let imageIndex = document.getElementById('initialImageCount').value;
-
-        function addImageField() {
-            const imageContainer = document.getElementById('imageContainer');
-            const newImageEntry = document.createElement('div');
-            newImageEntry.className = 'imageEntry';
-            newImageEntry.innerHTML = `
-                <label for="images[${imageIndex}].url">Image URL:</label>
-                <input type="text" id="images[${imageIndex}].url" name="images[${imageIndex}].url" placeholder="Image URL">
-                <label for="images[${imageIndex}].description">Image Description:</label>
-                <input type="text" id="images[${imageIndex}].description" name="images[${imageIndex}].description" placeholder="Image Description">
-            `;
-            imageContainer.appendChild(newImageEntry);
-            imageIndex++;
-        }
-
-        document.getElementById('carForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from actually submitting
-            var successMessage = document.getElementById("successMessage");
-            successMessage.style.display = "block";
-            setTimeout(function() {
-                successMessage.style.display = "none";
-            }, 3000); // Hide the message after 3 seconds
-        });
-
-        // Make addImageField function globally accessible
-        window.addImageField = addImageField;
-    });
-</script> -->
-
 </body>
 </html>
